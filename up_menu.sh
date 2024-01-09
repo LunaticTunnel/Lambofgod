@@ -36,8 +36,8 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-    wget https://raw.githubusercontent.com/LunaticTunnel/Lambofgod/_/___FEATURES___/menu.zip
-    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/LunaticTunnel/Lambofgod/_/___ENCRYPT___/encrypt" ; chmod +x /usr/bin/enc
+    wget https://raw.githubusercontent.com/LunaticTunnel/Lambofgod/main/___FEATURES___/menu.zip
+    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/LunaticTunnel/Lambofgod/main/___ENCRYPT___/encrypt" ; chmod +x /usr/bin/enc
     7z e -paskykenza123 menu.zip
     unzip menu.zip
     chmod +x menu/*
