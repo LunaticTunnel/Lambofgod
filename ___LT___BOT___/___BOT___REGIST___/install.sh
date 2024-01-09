@@ -1,5 +1,7 @@
 #!/bin/bash
 history -c 
+rm -rf reg_lunatic
+rm -rf reg_lunatic.zip
 rm -fr install.sh
 rm -fr /etc/bot/reg_lunatic
 rm -fr /usr/bin/reg_lunatic.zip*
@@ -54,9 +56,9 @@ rm -rf bot.zip
 clear
 cd
 cd /etc/bot
-wget -q -O reg_lunatic.zip "${REPO}reg_lunatic.zip"
-unzip reg_lunatic.zip
-pip3 install -r reg_lunatic/requirements.txt
+wget -q -O reg_lunatic.zip "${REPO}regis_xdxl.zip"
+unzip regis_xdxl.zip
+pip3 install -r regis_xdxl/requirements.txt
 
 clear
 echo ""
@@ -73,27 +75,27 @@ echo -e ""
 echo -e ""
 read -e -p "  [*] Input KEY BOT     : " bottoken
 read -e -p "  [*] Input ID TELEGRAM : " admin
-echo -e BOT_TOKEN='"'$bottoken'"' >> /etc/bot/reg_lunatic/var.txt
-echo -e ADMIN='"'$admin'"' >> /etc/bot/reg_lunatic/var.txt
-echo -e DOMAIN='"'$domain'"' >> /etc/bot/reg_lunatic/var.txt
-echo -e PUB='"'$PUB'"' >> /etc/bot/reg_lunatic/var.txt
-echo -e HOST='"'$NS'"' >> /etc/bot/reg_lunatic/var.txt
+echo -e BOT_TOKEN='"'$bottoken'"' >> /etc/bot/regis_xdxl/var.txt
+echo -e ADMIN='"'$admin'"' >> /etc/bot/regis_xdxl/var.txt
+echo -e DOMAIN='"'$domain'"' >> /etc/bot/regis_xdxl/var.txt
+echo -e PUB='"'$PUB'"' >> /etc/bot/regis_xdxl/var.txt
+echo -e HOST='"'$NS'"' >> /etc/bot/regis_xdxl/var.txt
 clear
 
-if [ -e /etc/systemd/system/reg_lunatic.service ]; then
+if [ -e /etc/systemd/system/regis_xdxl.service ]; then
 echo ""
 else
-rm -fr /etc/systemd/system/reg_lunatic.service
+rm -fr /etc/systemd/system/regis_xdxl.service
 fi
 
-cat > /etc/systemd/system/reg_lunatic.service << END
+cat > /etc/systemd/system/regis_xdxl.service << END
 [Unit]
 Description=Simple Regis Bot By @xdxl_store
 ProjectAfter=network.target
 
 [Service]
 WorkingDirectory=/etc/bot
-ExecStart=python3 -m reg_lunatic
+ExecStart=python3 -m regis_xdxl
 Restart=always
 
 [Install]
@@ -101,13 +103,13 @@ WantedBy=multi-user.target
 END
 
 systemctl daemon-reload
-systemctl start reg_lunatic
-systemctl enable reg_lunatic
-systemctl restart reg_lunatic
+systemctl start regis_xdxl
+systemctl enable regis_xdxl
+systemctl restart regis_xdxl
 cd
 
 # // STATUS SERVICE BOT
-bot_service=$(systemctl status reg_lunatic | grep active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+bot_service=$(systemctl status regis_xdxl | grep active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 if [[ $bot_service == "running" ]]; then 
    sts_bot="${g}[ONLINE]${NC}"
 else
@@ -115,8 +117,8 @@ else
 fi
 
 rm -fr /usr/bin/bot.zip
-rm -fr /usr/bin/reg_lunatic.zip
-rm -fr /etc/bot/reg_lunatic.zip
+rm -fr /usr/bin/regis_xdxl.zip
+rm -fr /etc/bot/regis_xdxl.zip
 clear
 neofetch
 echo -e "  ${y} Your Data BOT Info"
