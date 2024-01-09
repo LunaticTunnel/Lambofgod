@@ -1,0 +1,7 @@
+
+REPO="https://raw.githubusercontent.com/LunaticTunnel/Lambofgod/main/"
+
+
+
+wget -q -O /etc/default/dropbear "${REPO}___CFG___CONF___JS___/dropbear.conf"
+chmod +x /etc/default/dropbear
